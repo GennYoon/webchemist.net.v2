@@ -1,5 +1,35 @@
 const PROJECTS = [
   {
+    id: "client-1",
+    name: "기업 브랜드 사이트 리뉴얼",
+    tagline: "B2B SaaS 기업 공식 사이트",
+    description:
+      "제품 소개, 팀 소개, 미팅 예약까지 원스톱으로 처리하는 마케팅 사이트. 기존 대비 전환율 2배 향상.",
+    tags: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    year: "2025",
+    href: null,
+  },
+  {
+    id: "client-2",
+    name: "물류 관리 대시보드",
+    tagline: "실시간 배송 추적 & 재고 관리",
+    description:
+      "다수 창고의 재고·배송 현황을 실시간으로 시각화하는 웹 애플리케이션. 기존 엑셀 기반 운영 대체.",
+    tags: ["React", "Supabase", "Recharts", "PostgreSQL"],
+    year: "2024",
+    href: null,
+  },
+  {
+    id: "client-3",
+    name: "커뮤니티 플랫폼",
+    tagline: "멤버십 기반 학습 커뮤니티",
+    description:
+      "강의, 과제, 멤버 디렉토리, 실시간 알림을 포함한 풀스택 커뮤니티 플랫폼.",
+    tags: ["React", "Supabase", "Edge Functions", "Stripe"],
+    year: "2024",
+    href: null,
+  },
+  {
     id: "devist",
     name: "devist",
     tagline: "AI-driven development platform",
@@ -7,17 +37,8 @@ const PROJECTS = [
       "개발 워크플로우 자동화 플랫폼. 이슈 트래킹, AI 에이전트 오케스트레이션, 워크플로우 디자인을 하나로.",
     tags: ["React", "TypeScript", "Tauri", "Supabase"],
     year: "2024—",
-    href: "https://github.com/webchemist/devist",
-  },
-  {
-    id: "webchemist-net",
-    name: "webchemist.net",
-    tagline: "Personal brand site",
-    description:
-      "직접 설계하고 개발한 개인 브랜드 사이트. React + Vite + Tailwind CSS v4.",
-    tags: ["React", "Vite", "Tailwind CSS v4"],
-    year: "2026",
-    href: "#",
+    href: "https://github.com/GennYoon/devist",
+    isSelf: true,
   },
 ];
 
@@ -35,11 +56,16 @@ export function Projects() {
             className="group border-t border-white/10 py-10 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 items-start hover:border-white/30 transition-colors"
           >
             <div className="space-y-3">
-              <div className="flex items-baseline gap-4">
-                <h3 className="text-[1.4rem] font-bold tracking-tight text-[#f5f5f5] group-hover:text-white transition-colors">
+              <div className="flex items-baseline gap-3 flex-wrap">
+                <h3 className="text-[1.3rem] font-bold tracking-tight text-[#f5f5f5] group-hover:text-white transition-colors">
                   {project.name}
                 </h3>
-                <span className="text-[13px] text-[#f5f5f5]/40 font-mono">{project.tagline}</span>
+                {project.isSelf && (
+                  <span className="font-mono text-[10px] border border-white/20 text-[#f5f5f5]/40 px-1.5 py-0.5">
+                    자체 제품
+                  </span>
+                )}
+                <span className="text-[13px] text-[#f5f5f5]/40">{project.tagline}</span>
               </div>
               <p className="text-[14px] leading-relaxed text-[#f5f5f5]/50 max-w-lg">
                 {project.description}
@@ -55,9 +81,9 @@ export function Projects() {
                 ))}
               </div>
             </div>
-            <div className="flex items-center gap-6 md:text-right">
+            <div className="flex items-center gap-4 md:flex-col md:items-end md:pt-1">
               <span className="font-mono text-[12px] text-[#f5f5f5]/30">{project.year}</span>
-              {project.href !== "#" && (
+              {project.href ? (
                 <a
                   href={project.href}
                   target="_blank"
@@ -66,6 +92,8 @@ export function Projects() {
                 >
                   →
                 </a>
+              ) : (
+                <span className="font-mono text-[10px] text-[#f5f5f5]/20">비공개</span>
               )}
             </div>
           </article>
