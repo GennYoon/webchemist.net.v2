@@ -1,18 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", ui-monospace, monospace;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-
-  --color-brand: #0f0f0f;
-  --color-brand-fg: #f5f5f5;
-  --color-accent: #e5e5e5;
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #0f0f0f;
-  color: #f5f5f5;
+  background-color: #0a0a0a;
+  color: #f0f0f0;
 }
 
 body {
@@ -22,17 +19,18 @@ body {
 }
 
 ::selection {
-  background-color: #f5f5f5;
-  color: #0f0f0f;
+  background-color: #f0f0f0;
+  color: #0a0a0a;
 }
 
-::-webkit-scrollbar {
-  width: 4px;
-}
-::-webkit-scrollbar-track {
-  background: #0f0f0f;
-}
-::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 2px;
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #2a2a2a; }
+
+/* 미세 그리드 — 전문가적 격자감 */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 80px 80px;
 }

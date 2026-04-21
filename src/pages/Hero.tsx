@@ -1,40 +1,84 @@
+const STATS = [
+  { value: "5+", label: "years" },
+  { value: "30+", label: "projects" },
+  { value: "100%", label: "shipped" },
+];
+
 export function Hero() {
   return (
-    <section className="min-h-screen flex flex-col justify-center px-6 max-w-5xl mx-auto pt-16">
-      <div className="space-y-6">
-        <p className="font-mono text-[13px] tracking-[0.2em] text-[#f5f5f5]/40 uppercase">
+    <section className="relative min-h-screen flex flex-col justify-center grid-bg overflow-hidden">
+      {/* 오른쪽 상단 수직 텍스트 */}
+      <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-3">
+        <div className="w-px h-16 bg-white/10" />
+        <span
+          className="font-mono text-[10px] tracking-[0.3em] text-white/20 uppercase"
+          style={{ writingMode: "vertical-rl" }}
+        >
           Full-Stack Engineer
-        </p>
-        <h1 className="text-[clamp(3rem,8vw,7rem)] font-bold leading-[0.95] tracking-tighter text-[#f5f5f5]">
+        </span>
+        <div className="w-px h-16 bg-white/10" />
+      </div>
+
+      <div className="max-w-5xl mx-auto px-6 w-full pt-24 pb-16">
+        {/* 상단 레이블 */}
+        <div className="flex items-center gap-3 mb-12">
+          <div className="w-6 h-px bg-white/30" />
+          <span className="font-mono text-[11px] tracking-[0.25em] text-white/40 uppercase">
+            webchemist.net
+          </span>
+        </div>
+
+        {/* 메인 헤딩 */}
+        <h1 className="text-[clamp(4rem,12vw,9rem)] font-black leading-[0.88] tracking-[-0.04em] text-white mb-10">
           web
+          <span className="text-white/20">.</span>
           <br />
-          chemist
+          <span className="text-white/80">chem</span>
+          <span className="text-white/40">ist</span>
         </h1>
-        <p className="max-w-md text-[16px] leading-relaxed text-[#f5f5f5]/50">
-          코드로 제품을 만들고, 설계로 문제를 해결합니다.
-          <br />
-          아이디어에서 배포까지 — 직접.
-        </p>
-        <div className="flex items-center gap-6 pt-4">
-          <a
-            href="#projects"
-            className="inline-flex items-center gap-2 bg-[#f5f5f5] text-[#0f0f0f] px-5 py-2.5 text-[13px] font-semibold tracking-wide hover:bg-white transition-colors"
-          >
-            Projects →
-          </a>
-          <a
-            href="#contact"
-            className="text-[13px] text-[#f5f5f5]/50 hover:text-[#f5f5f5] transition-colors tracking-wide border-b border-[#f5f5f5]/20 pb-0.5"
-          >
-            Contact
-          </a>
+
+        {/* 서브 카피 + CTA */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-10">
+          <div className="space-y-6 max-w-sm">
+            <p className="text-[15px] leading-[1.7] text-white/50 font-light">
+              아이디어를 실제 제품으로.
+              <br />
+              프론트엔드부터 인프라까지 — 직접 설계하고 직접 만듭니다.
+            </p>
+            <div className="flex items-center gap-4">
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 bg-white text-black px-6 py-3 text-[13px] font-bold tracking-wide hover:bg-white/90 transition-colors"
+              >
+                작업물 보기
+              </a>
+              <a
+                href="#contact"
+                className="text-[13px] text-white/40 hover:text-white/80 transition-colors font-mono"
+              >
+                문의 →
+              </a>
+            </div>
+          </div>
+
+          {/* 통계 */}
+          <div className="flex gap-10 sm:gap-8">
+            {STATS.map((s) => (
+              <div key={s.label} className="flex flex-col gap-1">
+                <span className="text-[2.2rem] font-black tracking-tight text-white leading-none">
+                  {s.value}
+                </span>
+                <span className="font-mono text-[11px] text-white/30 uppercase tracking-widest">
+                  {s.label}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
-        <div className="w-px h-12 bg-gradient-to-b from-transparent to-[#f5f5f5]" />
-      </div>
+      {/* 하단 스크롤 라인 */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
     </section>
   );
 }
